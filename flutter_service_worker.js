@@ -11,10 +11,10 @@ const RESOURCES = {
 "assets/NOTICES": "0f64ab87b3499eb49705829f2429d73c",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
 "favicon.png": "bf973f22899f995382d98abadb4ab671",
-"icons/Icon-192.png": "2287fc7e19551c336c3c1b674628bf44",
+"icons/Icon-192.png": "88abdf452716c765f97d92719f4517df",
 "icons/Icon-512.png": "19c0b0066702c41c9ff76e91d67b4863",
-"index.html": "6cb0aeeaf724cccdce8f49493a05e3ba",
-"/": "6cb0aeeaf724cccdce8f49493a05e3ba",
+"index.html": "ea097dde74a15da3ff4c2f21d9fb4085",
+"/": "ea097dde74a15da3ff4c2f21d9fb4085",
 "main.dart.js": "204a56a9a0bea6ee8e76bad8a50933d9",
 "manifest.json": "60d16b53f15fa859f20113c151b1f872",
 "version.json": "da0819c707a0d0bd42096e66fba54f85"
