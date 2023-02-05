@@ -3,30 +3,37 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "6837e87a9226606c570cd195e62b80fa",
-"assets/assets/2021-Oosterschelde04.xml": "96f19aca43ac3a4e3d1cdcbe279573fa",
-"assets/assets/2021-Westkapelle.xml": "4b55aac1ad7f3fe68007f4eeb3d5740d",
-"assets/assets/2022-Oosterschelde04.xml": "8d8ebf94d38394423f4c05956667c42d",
+  "assets/AssetManifest.json": "401deb3237ff3a4c182c2e08a46bf29b",
+"assets/assets/2023-Oosterschelde04.xml": "366f0f85adedaadc41f0f8ef38bd1bed",
+"assets/assets/2023-Oosterschelde14.xml": "3c319ddaeec602befdf75fbbfd1ba891",
+"assets/assets/2023-Westkapelle.xml": "bacd9b85cf0c85c03aa2b0bc18e5dcf2",
+"assets/assets/2024-Oosterschelde04.xml": "edb464b53b9ea9a01fe794104e095894",
+"assets/assets/2024-Oosterschelde14.xml": "3822f92d2e77a3b1c678cf9c171f3697",
+"assets/assets/2024-Westkapelle.xml": "2293ae0a3f33a6c5b0366d4a7257f29d",
 "assets/assets/Icon-512.png": "19c0b0066702c41c9ff76e91d67b4863",
-"assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/NOTICES": "64cb7878f68a67314c5d8fe4fd53c92a",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
+"assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
+"assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
+"assets/NOTICES": "20aaf04930792baec0372e515b3b716e",
+"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
+"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
+"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
+"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
 "favicon.png": "bf973f22899f995382d98abadb4ab671",
+"flutter.js": "eb2682e33f25cd8f1fc59011497c35f8",
+"icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "19c0b0066702c41c9ff76e91d67b4863",
 "icons/Icon-getij-192.png": "0690217beb98307fd652db8b5ca6c6cc",
-"index.html": "b54c92951e5ce15490974a9a1b065649",
-"/": "b54c92951e5ce15490974a9a1b065649",
-"main.dart.js": "0c628e760bf7cda9bd013d97ba94640e",
+"index.html": "294002cd90c5a3467d2ebe2f4b7f0165",
+"/": "294002cd90c5a3467d2ebe2f4b7f0165",
+"main.dart.js": "065dd1040297ef6a86fcc88fd0b11cd9",
 "manifest.json": "60d16b53f15fa859f20113c151b1f872",
-"version.json": "da0819c707a0d0bd42096e66fba54f85"
+"version.json": "0c492d8b5d236117b81f0e3dd407ea5e"
 };
 
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "/",
-"main.dart.js",
+  "main.dart.js",
 "index.html",
 "assets/NOTICES",
 "assets/AssetManifest.json",
@@ -37,7 +44,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
