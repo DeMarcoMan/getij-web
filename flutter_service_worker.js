@@ -12,22 +12,22 @@ const RESOURCES = {
 "assets/assets/2024-Westkapelle.xml": "2293ae0a3f33a6c5b0366d4a7257f29d",
 "assets/assets/Icon-512.png": "19c0b0066702c41c9ff76e91d67b4863",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
-"assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
-"assets/NOTICES": "20aaf04930792baec0372e515b3b716e",
-"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
-"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
-"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
-"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
+"assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
+"assets/NOTICES": "34019893773606d6f6601ce55f6b522e",
+"canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
+"canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
+"canvaskit/profiling/canvaskit.js": "c21852696bc1cc82e8894d851c01921a",
+"canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
 "favicon.png": "bf973f22899f995382d98abadb4ab671",
-"flutter.js": "eb2682e33f25cd8f1fc59011497c35f8",
+"flutter.js": "a85fcf6324d3c4d3ae3be1ae4931e9c5",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "19c0b0066702c41c9ff76e91d67b4863",
 "icons/Icon-getij-192.png": "0690217beb98307fd652db8b5ca6c6cc",
-"index.html": "294002cd90c5a3467d2ebe2f4b7f0165",
-"/": "294002cd90c5a3467d2ebe2f4b7f0165",
-"main.dart.js": "065dd1040297ef6a86fcc88fd0b11cd9",
+"index.html": "a9a7343f77e204f1798dda1da913fce8",
+"/": "a9a7343f77e204f1798dda1da913fce8",
+"main.dart.js": "809d334fa659b0927225dc24d6e1a700",
 "manifest.json": "60d16b53f15fa859f20113c151b1f872",
-"version.json": "0c492d8b5d236117b81f0e3dd407ea5e"
+"version.json": "12e486b39042565ff38d1416c478106d"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -35,7 +35,6 @@ const RESOURCES = {
 const CORE = [
   "main.dart.js",
 "index.html",
-"assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
@@ -134,9 +133,11 @@ self.addEventListener("fetch", (event) => {
     .then((cache) =>  {
       return cache.match(event.request).then((response) => {
         // Either respond with the cached resource, or perform a fetch and
-        // lazily populate the cache.
+        // lazily populate the cache only if the resource was successfully fetched.
         return response || fetch(event.request).then((response) => {
-          cache.put(event.request, response.clone());
+          if (response && Boolean(response.ok)) {
+            cache.put(event.request, response.clone());
+          }
           return response;
         });
       })
